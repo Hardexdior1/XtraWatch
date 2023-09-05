@@ -41,7 +41,6 @@ function App() {
   const change4 = useRef();
 
   const [mode, setMode] = useState(true);
-  const [img, setImg] = useState();
 
   // const[m,setM]=useState('nn')
   // home
@@ -81,7 +80,7 @@ function App() {
   const [drag, setDrag] = useState(true);
 
   return (
-    <div className="App" ref={background}>
+    <section className="App" ref={background}>
 
          
 
@@ -130,5 +129,9 @@ function App() {
       <a className="a2" href="">
         REFRESH
       </a>
-    </div>
-  
+      
+    </section>
+  );
+}
+
+export default App;
