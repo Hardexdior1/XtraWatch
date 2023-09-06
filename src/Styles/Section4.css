@@ -16,7 +16,7 @@ font-size: 44px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5% 20px ;
+    padding: 5% 5px ;
 }
 .imgAndText
 .watchFlex{
@@ -27,7 +27,6 @@ font-size: 44px;
     gap: 20px;
     justify-content: space-between;
     padding: 20px 25px ;
-    /* background-color: #0088ff; */
 }
 .watchFlex1{
     display: grid;

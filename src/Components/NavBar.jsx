@@ -24,23 +24,16 @@ const NavBar = ({ change4}) => {
 
    window.addEventListener('scroll',()=>{
     if(window.scrollY>1200){
-      toggleHeader.current.classList.add('header')
-      toggleHeader.current.classList.remove('fixed')
-    }
-    if(window.scrollY >200){
       toggleHeader.current.classList.remove('header')
       toggleHeader.current.classList.add('fixed')
-
     }
+   
 
     else{
       toggleHeader.current.classList.add('header')
       toggleHeader.current.classList.remove('fixed')
     }
-    if(window.scrollY>500){
-      toggleHeader.current.classList.add('header')
-      toggleHeader.current.classList.remove('fixed')
-    }
+    
    }
    
    )
