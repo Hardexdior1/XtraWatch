@@ -178,23 +178,3 @@ width: 50px;}
     }
 
 }
-
-.icons{
-    display: flex;
-    gap: 20px;
-    padding-top: 10px;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 200;
-    background-color: black;
-    align-items: baseline;
-}
-@media (min-width:500px) {
-    .icons{
-        display: none;
-    }
-    
-}

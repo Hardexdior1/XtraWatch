@@ -126,9 +126,7 @@ function App() {
       <a className="top" href="#">
         ^
       </a>
-      <a className="a2" href="">
-        REFRESH
-      </a>
+   
       
     </section>
   );

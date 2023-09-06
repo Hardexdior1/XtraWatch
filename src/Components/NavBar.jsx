@@ -5,9 +5,7 @@ import cartIcon from "../images/cart.PNG";
 import { Link } from "react-router-dom";
 
 
-import faceBook from '../images/facebook.png'
-import telegram from '../images/telegram.png'
-import twitter from '../images/twitter.png'
+
 
 const NavBar = ({ change4}) => {
     const toggleNav=useRef()
