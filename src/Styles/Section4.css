@@ -6,7 +6,7 @@ font-size: 44px;
 
 }
 .para{
-    color: #666666;
+    /* color: #666666; */
     font-size: 17px ;
     max-width: 680px;
     line-height: 30px;
@@ -236,18 +236,16 @@ color: white;
     .testimonials{
         grid-template-columns: 1fr ;
         padding: 30px  ;
-        display: none;
+        /* display: none; */
         text-align: center;
         justify-content: center;
         align-items: center;
         gap: 50px ;
-        background-color: red;
     }
     .testimonialBox{
-        max-width: 320px ; 
+        max-width:250px ; 
         margin: 0 auto;
         margin-top: 10% ;
-        background-color: #0088ff;
      }
    .testimonials h1{
     font-size: 1.5em ;
