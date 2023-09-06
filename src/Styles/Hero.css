@@ -34,7 +34,7 @@
 
 .section h3 {
   font-size: 25px;
-  color: #898989;
+  /* color: #898989; */
   margin-bottom: 0;
   font-weight: lighter;
 }
@@ -128,14 +128,14 @@
 @media (max-width: 767px) {
 
   .section h3 {
-    font-size: 15px;
+    font-size: 20px;
     /* color: #898989; */
     margin-bottom: 0;
     font-weight: lighter;
   }
 
   .section h2 {
-    font-size: 27px;
+    font-size: 28px;
     /* color: #0c0c0c; */
     font-weight: lighter;
     margin-top: 0;
@@ -144,11 +144,11 @@
   .section h1 {
     /* color: #0c0c0c; */
     font-weight: bold;
-    font-size: 30px;
+    font-size: 34px;
     margin-top: 0;
   }
   .section img {
-    width: 80%;
+    width: 93%;
   }
  
 }
