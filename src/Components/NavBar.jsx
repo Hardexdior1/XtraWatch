@@ -121,25 +121,7 @@ const NavBar = ({ change4}) => {
                 
             </div>
 
-            <div className="icons">
-       <Link>
-       <img src={twitter} alt="twitter" />
-      <h4><strong>twitter</strong></h4>
-
-       </Link>
-       <Link>
-       <img src={telegram} alt="telegram" />
-    <h4>  <strong>telegram</strong></h4>
-       </Link>
-       <Link>
-       <img src={faceBook} alt="twitter" />
-    <h4>  <strong>twitter</strong></h4>
-       </Link>
-       <Link>
-       <img src={faceBook} alt="twitter" />
-    <h4>  <strong>twitter</strong></h4>
-       </Link>
-      </div>
+           
     </div>
   );
 };

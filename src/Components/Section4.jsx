@@ -179,7 +179,7 @@ const Section4 = ({ change,change2}) => {
           smartwatches provide a local touchscreen interface for daily use.
         </p>
 
-        <div className="btn">
+        <div className="btn1">
         <button className="purchase2">Purchase Now</button>
         <button className="find">Find Nearby Stores </button>
         

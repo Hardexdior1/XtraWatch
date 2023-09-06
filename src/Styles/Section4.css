@@ -200,6 +200,7 @@ color: white;
     position: relative;
 
 }
+
 .satisfied{
     border-radius: 10px;
     width: 100%;
@@ -347,7 +348,7 @@ color: white;
 
 
 .nearByWrap p{
-    color: #aaaaaa;
+    color: white;
     font-size: 18px;
     font-weight: 490;
     z-index: 100;
@@ -357,7 +358,7 @@ color: white;
 
 }
 
-.btn{
+.btn1{
     z-index: 100;
     display: flex;
     gap: 10px;
@@ -405,7 +406,7 @@ color: white;
         }
 }
 @media (max-width:502px) {
-    .btn{
+    .btn1{
         flex-direction: column;
         gap: 20px;
     }
@@ -423,14 +424,14 @@ color: white;
 .ratingWrap img{
     width: 90%;
 }
-.btn button:nth-child(1){
+.btn1 button:nth-child(1){
     /* background-color: #000; */
     height: 50px;
     width: 200px;
     border-radius: 3rem;
     border: none;
     cursor: pointer;
-    color: #626262;
+    color: black;
     font-size: 16px;
     cursor: pointer;
     transition: 0.5s ;
@@ -438,7 +439,7 @@ color: white;
 }
 
 
-.btn button:nth-child(2){
+.btn1 button:nth-child(2){
     /* background-color: #000; */
     height: 50px;
     width: 200px;
