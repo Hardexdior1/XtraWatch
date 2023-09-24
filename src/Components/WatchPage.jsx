@@ -62,10 +62,10 @@ const WatchPage = () => {
       </div>
      <div className="categoryWrap">
 
-<button onClick={all} className="btn btn1">All</button>
+{/* <button onClick={all} className="btn btn1">All</button>
 <button onClick={sport} className="btn btn1 ">Sport</button>
 <button onClick={summer} className="btn btn1 ">Summer</button>
-<button onClick={event} className="btn btn1 ">Event</button>
+<button onClick={event} className="btn btn1 ">Event</button> */}
 
 <select onClick={((event)=>{
 filter(event.target.value)
@@ -73,6 +73,10 @@ filter(event.target.value)
 })}>
 <option value="all">All</option>
 <option value="event">Event Watch</option>
+<option value="sport">Event Watch</option>
+<option value="summer">Event Watch</option>
+
+
 
 
 </select>
