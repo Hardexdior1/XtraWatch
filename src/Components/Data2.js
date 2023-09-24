@@ -9,6 +9,7 @@ import white from '../images/white-sports-watch.png'
 
 import front from '../images/watch-front-home.png'
 import brown from '../images/watch-2-600x600.png'
+import watch from '../images/custom-watch.png'
 const Data2 = [
   {
     id: 1,
@@ -68,7 +69,7 @@ const Data2 = [
   },
   {
     id: 7,
-    img: front ,
+    img: watch ,
     name: "Summer watch ",
     price: 699.0,
     category:'summer'

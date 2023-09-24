@@ -9,13 +9,13 @@ import '../Styles/Section4.css'
 const WatchPage = () => {
   const [data,setData]=useState(Data2)
 
-  const [productLength,setProductLength]=useState(Data2.length + ' Watches Available ')
+  const [productLength,setProductLength]=useState(Data2.length + ' Watches available ')
 
 
   const all=()=>{
    
     setData(Data2)
-    setProductLength(Data2.length + ' Watches Available ')
+    setProductLength(Data2.length + ' Watches available ')
   }
   const sport=()=>{
     let sport=Data2.filter((item)=>item.category=='sport')
@@ -35,6 +35,21 @@ const WatchPage = () => {
     setData(event)
   }
  
+  const filter=(category)=>{
+      if(category=='all'){
+          setData(Data2)
+          setProductLength(Data2.length + '  Watches available')
+
+          return;
+
+      }
+
+      const newItems=Data2.filter((item)=>item.category==category)
+      setData(newItems)
+      setProductLength(newItems.length + ' Watches found ')
+
+
+  }
 
   return (
     <div>
@@ -48,17 +63,25 @@ const WatchPage = () => {
      <div className="categoryWrap">
 
 <button onClick={all} className="btn btn1">All</button>
-<button onClick={sport} className="btn btn2 ">Sport</button>
-<button onClick={summer} className="btn btn3 ">Summer</button>
-<button onClick={event} className="btn btn4 ">Event</button>
+<button onClick={sport} className="btn btn1 ">Sport</button>
+<button onClick={summer} className="btn btn1 ">Summer</button>
+<button onClick={event} className="btn btn1 ">Event</button>
+
+<select onClick={((event)=>{
+filter(event.target.value)
+
+})}>
+<option value="all">All</option>
+<option value="event">Event Watch</option>
 
 
+</select>
 
 
 </div>
      </div>
  
-      <div className='watchFlex watchFlex1'>
+      <div className='watchFlex watchFlex1' id='test'>
       {/* <h1>{data.length}</h1> */}
 
 
