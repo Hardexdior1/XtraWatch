@@ -71,6 +71,7 @@ const WatchPage = () => {
 filter(event.target.value)
 
 })}>
+<option value="all">All</option>
 
 <option value="event">Event Watch</option>
 <option value="sport">Sport Watch</option>
