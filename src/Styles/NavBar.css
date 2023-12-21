@@ -3,9 +3,10 @@
 
 
 .header{
-    padding: 30px 25px ;
+    padding: 14px 25px ;
     /* position: relative; */
     transition: 0.3s ;
+    border-bottom: 1px solid grey;
 
 }
 .fixed{
@@ -14,10 +15,11 @@
     left: 0;
     top: 0;
     box-shadow: 0px 7px 50px rgb(92, 89, 89);
-    padding: 30px 25px ;
+    padding: 18px 25px ;
     /* position: relative; */
     z-index: 1000;
-    background-color: white;
+    background-color: black;
+    color: white;
     transition: 0.3s;
 }
 .nav{
@@ -36,12 +38,12 @@ li{
 }
 a{
     text-decoration: none;
-    color: #a3a3a3 ;
+    /* color: #a3a3a3 ; */
     font-weight: bold;
 }
 .ul a{
     text-decoration: none;
-    color: #a3a3a3 ;
+    /* color: #a3a3a3 ; */
     font-weight: bold;
 }
 /* .ul a.active{
@@ -177,4 +179,14 @@ width: 50px;}
 
     }
 
+}
+
+.logoWrap{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.logoWrap img{
+    width: 35px;
+    z-index: -4;
 }

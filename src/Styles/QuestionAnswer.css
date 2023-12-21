@@ -16,9 +16,10 @@ padding: 5px ;
     cursor: pointer;
     padding: 10px ;
     border-radius:15px  25px ;
-/* color: black; */
-background-color: #00000007;
+color: black;
+background-color: #ffffff;
 box-shadow: 5px 1px 12px rgb(119, 115, 115);
+
 
 
 }

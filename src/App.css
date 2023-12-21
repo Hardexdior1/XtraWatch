@@ -10,12 +10,25 @@
   
   margin: 0;
   padding: 0;
-  background-color: white;
-    /* background: #E5E5E5; */
-
+    background: #f9fcfd;
+/* background-color: rgb(56, 54, 55); */
   transition: 0.6s;
 
 } 
+.App a{
+  /* color: black; */
+  color: #969090;
+}
+.App nav .active1{
+  color: white;
+  
+}
+.App nav .contactUs{
+ 
+  background-color: black;
+  
+}
+
 .AppBlack{
   background-color: black;
   text-align: center;
@@ -25,6 +38,22 @@
   transition: 0.6s;
 
 }
+.AppBlack a{
+  color: white;
+}
+.AppBlack nav .active1{
+  color: white;
+  
+}
+.AppBlack .fixed{
+  color: white;
+}
+.AppBlack nav .contactUs{
+ 
+  background-color:black;
+  
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -65,3 +94,30 @@ html{
  z-index: 1000;
 }
 
+
+
+
+.unControlWrap{
+  display: flex;
+  justify-content: space-around;
+  
+}
+.eachTest{
+  background-color: white;
+  height: 400px;
+  width: 350px;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  transition: 0.3s;
+
+}
+.aboutWatch{
+  height: 100%;
+  z-index: 10;
+  background-color: #969090;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}

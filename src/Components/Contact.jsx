@@ -33,7 +33,7 @@ const Contact = () => {
           <div className="eachAddCarrier">
             <img src={phone} alt="phoneIcon" />
             <h3>Phone </h3>
-            <p>adeniranquwam001@gmail.com</p>
+            <p>+234 9021004201</p>
           </div>
           <div className="eachAddCarrier">
             <img src={address} alt="addressIcon" />

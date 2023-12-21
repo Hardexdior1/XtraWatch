@@ -19,7 +19,8 @@ import Testimonial from "./Components/Testimonial";
 import Watches from "./Components/Watches";
 import WatchPage from "./Components/WatchPage";
 import Contact from "./Components/Contact";
-
+// import UncontrolledExample from "./Components/UnControlledExample";
+import data3 from "./Components/TestingData";
 // ren .git .git_backup
 
 // Create your own styling
@@ -81,8 +82,11 @@ function App() {
 
   return (
     <section className="App" ref={background}>
-
-         
+      <div className="unControlWrap">
+{/* {data3.map((eachData)=>{
+  return <UncontrolledExample key={eachData.id} {...eachData}/>
+})} */}
+</div>
 
       {mode ? (
         <img

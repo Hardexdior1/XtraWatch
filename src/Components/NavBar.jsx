@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "../Styles/NavBar.css";
-import logo from "../images/extraWatch.PNG";
+import logo from "../images/watch-front-home.png";
 import cartIcon from "../images/cart.PNG";
 import { Link } from "react-router-dom";
 
@@ -53,7 +53,7 @@ const NavBar = ({ change4}) => {
 
             </div>
           <div className="logo">
-            <Link to='/' path="/"><img src={logo} alt="image" className="logoImg" /></Link>
+            <Link to='/' path="/"> <div className="logoWrap"><div><img src={logo} alt="image" className="logoImg" /></div> <h3>XTRA<span>Watch</span></h3></div></Link>
           </div>
 
           <ul  className="ul" ref={toggleNav}>
@@ -93,7 +93,7 @@ const NavBar = ({ change4}) => {
 
           <div className="cartIconCarrier ">
             <div>
-            <button className="contactUs">              <Link className="active" to="./Contact" onClick={()=>{hideNav()}}>Contact us</Link>
+            <button className="contactUs">              <Link className="active1" to="./Contact" onClick={()=>{hideNav()}}>Contact us</Link>
 </button>
 
             </div>

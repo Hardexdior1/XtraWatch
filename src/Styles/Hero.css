@@ -28,7 +28,6 @@
   padding: 40px 40px;
   position: relative;
   gap: 30px;
-  animation: fadeAnimation 6s ease infinite alternate;
   border-bottom: 1px solid grey ;
 }
 
@@ -62,14 +61,14 @@
   width: 85%;
 }
 
-@keyframes fadeAnimation {
+/* @keyframes fadeAnimation {
   0% {
     opacity: 0.1;
   }
   100% {
     opacity: 1;
   }
-}
+} */
 
 
 .purchase {
@@ -151,4 +150,10 @@
     width: 93%;
   }
  
+}
+
+.sectionImGANdTextFlex{
+display: grid;
+grid-template-columns: 1fr 1fr ;
+align-items: center;
 }

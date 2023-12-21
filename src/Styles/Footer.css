@@ -81,6 +81,7 @@ border-top-left-radius: 3rem;
     width: 200px;
     border-radius: 10px;
     font-weight: bold;
+    box-shadow: 2px 2px 3px  rgb(76, 73, 68);
 }
 .footer button:nth-child(2){
     background-color: black;

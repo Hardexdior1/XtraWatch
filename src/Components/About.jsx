@@ -210,7 +210,7 @@ const About = () => {
 
   <section className="joinWrap">
     
-<div>
+<div className="join">
   <h1>Join our <span>happy customers</span> </h1>
   <p>You can trust our watches and the quality and professionalism of our products.</p>
 
@@ -231,7 +231,7 @@ const About = () => {
             </div>
 
             <div>
-              <h5 className="change2"  >John Carter</h5>
+              <h5 >John Carter</h5>
               <p>UX Designer </p>
             </div>
           </div>
@@ -256,6 +256,8 @@ const About = () => {
 </div>
 
 </Slider>
+
+
 
 
   </section >
