@@ -53,7 +53,7 @@ const NavBar = ({ change4}) => {
 
             </div>
           <div className="logo">
-            <Link to='/' path="/"> <div className="logoWrap"><div><img src={logo} alt="image" className="logoImg" /></div> <h3>XTRA<span>Watch</span></h3></div></Link>
+            <Link to='/' path="/"> <div className="logoWrap"><div><img src={logo} alt="image" className="logoImg" /></div> <h3 className="xtra">XTRA<span>Watch</span></h3></div></Link>
           </div>
 
           <ul  className="ul" ref={toggleNav}>
