@@ -7,7 +7,7 @@ import About from "./Components/About";
 import Footer from "./Components/Footer";
 
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import dark from "./images/darlmode.png";
 import light from "./images/lightmode.png";
@@ -21,6 +21,7 @@ import WatchPage from "./Components/WatchPage";
 import Contact from "./Components/Contact";
 // import UncontrolledExample from "./Components/UnControlledExample";
 import data3 from "./Components/TestingData";
+import Cart from "./Components/Cart";
 // ren .git .git_backup
 
 // Create your own styling
@@ -32,62 +33,81 @@ import data3 from "./Components/TestingData";
 //   );
 // };
 
-//
-
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const background = useRef();
   const change = useRef();
   const change2 = useRef();
   const change3 = useRef();
   const change4 = useRef();
 
-  const [mode, setMode] = useState(true);
+  const [message, setMessage] = useState("");
 
-  // const[m,setM]=useState('nn')
-  // home
+  const [mode, setMode] = useState(true);
   const changeToBlack = () => {
     background.current.classList.remove("App");
     background.current.classList.add("AppBlack");
-
-    // change.current.classList.remove("change");
-    // change.current.classList.add("changeToWHite");
-
-    // change2.current.classList.remove("change2");
-    // change2.current.classList.add("changeToWHite");
-
-    // change3.current.classList.remove("change3");
-    // change3.current.classList.add("changeToWhite");
-
-    // change4.current.classList.remove("home");
-    // change4.current.classList.add("changeToWhite");
   };
 
   const changeToDark = () => {
     background.current.classList.add("App");
     background.current.classList.remove("AppBlack");
-
-    // change.current.classList.add("change");
-    // change.current.classList.remove("changeToWHite");
-
-    // change2.current.classList.add("change2");
-    // change2.current.classList.remove("changeToWHite");
-
-    // change3.current.classList.add("change3");
-    // change3.current.classList.remove("changeToWhite");
-
-    // change4.current.classList.add("home");
-    // change4.current.classList.remove("changeToWhite");
   };
   const [drag, setDrag] = useState(true);
 
+  const [cart, setCart] = useState([]);
+  let length = cart.length;
+  console.log(length);
+
+  const cartTotal = cart.reduce((total, { price = 0 }) => total + price, 0);
+
+  console.log(cartTotal);
+
+  const addToCart = (product) => {
+    setCart((prev) => {
+      const itemExit = cart.find((item) => item.id == product.id);
+
+      if (itemExit) {
+        return prev;
+      }
+      setMessage("Product has been added to cart");
+
+      let timeoutId = setTimeout(() => {
+        setMessage("");
+      }, 2000);
+
+      setTimeout(() => {
+        clearTimeout(timeoutId);
+      }, 2000);
+
+      return [...prev, product];
+    });
+  };
+
+  const removeFromCart = (item) => {
+    setCart((currentCart) => {
+      const indexOfItemToRemove = currentCart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+
+      if (indexOfItemToRemove === -1) {
+        return currentCart;
+      }
+
+      return [
+        ...currentCart.slice(0, indexOfItemToRemove),
+        ...currentCart.slice(indexOfItemToRemove + 1),
+      ];
+    });
+  };
+
+  const clear = () => {
+    setCart([]);
+  };
   return (
     <section className="App" ref={background}>
-      <div className="unControlWrap">
-{/* {data3.map((eachData)=>{
-  return <UncontrolledExample key={eachData.id} {...eachData}/>
-})} */}
-</div>
-
       {mode ? (
         <img
           className="mode"
@@ -110,28 +130,44 @@ function App() {
         />
       )}
       <BrowserRouter>
-        <NavBar />
+        <NavBar length={length} />
         <Routes>
           <Route
             path="/"
-            element={<LandingPage change={change} change2={change2} />}
+            element={
+              <LandingPage
+                change={change}
+                change2={change2}
+                addToCart={addToCart}
+              />
+            }
           />
           <Route path="/About" element={<About />} />
           <Route path="/Faq" element={<Faq />} />
-          <Route path="/WatchPage" element={<WatchPage />} />
+          <Route
+            path="/WatchPage"
+            element={<WatchPage addToCart={addToCart} />}
+          />
           <Route path="/Contact" element={<Contact />} />
-
-
+          <Route
+            path="/Cart"
+            element={
+              <Cart
+                cart={cart}
+                cartTotal={cartTotal}
+                removeFromCart={removeFromCart}
+                clear={clear}
+              />
+            }
+          />
         </Routes>
         <Footer />
-
       </BrowserRouter>
+      <p className="message">{message}</p>
 
       <a className="top" href="#">
         ^
       </a>
-   
-      
     </section>
   );
 }

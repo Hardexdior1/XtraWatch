@@ -58,8 +58,14 @@ a{
 } */
 .cartIcon{
     cursor: pointer;
-    
+    position: relative;
   
+}
+.length{
+    position: absolute;
+    font-size: 20px;
+    right: 0;
+    color: rgb(8, 204, 8);
 }
 .cartIcon img{
     object-fit: cover;
@@ -187,9 +193,11 @@ width: 50px;}
 .logoWrap{
     display: flex;
     align-items: center;
-    color: white;
+    /* color: white; */
+  
 }
 .logoWrap img{
     width: 35px;
     z-index: -4;
 }
+

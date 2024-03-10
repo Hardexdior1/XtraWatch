@@ -12,7 +12,7 @@ import brown from '../images/watch-2-600x600.png'
 import watch from '../images/custom-watch.png'
 const Data2 = [
   {
-    id: 1,
+    id: 5,
     img: chromeWatch,
     name: "Chrome watch",
     price: 399.0,
@@ -21,7 +21,7 @@ const Data2 = [
 
   },
   {
-    id: 2,
+    id: 6,
     img: classicWatch,
     name: "Pink watch ",
     price: 399.0,
@@ -31,7 +31,7 @@ const Data2 = [
 
   },
   {
-    id: 3,
+    id: 7,
     img: goldWatch,
     name: "Dip watch",
     price: 699.0,
@@ -41,7 +41,7 @@ const Data2 = [
 
   },
   {
-    id: 4,
+    id: 8,
     img: blackWatch,
     name: "Lemon watch ",
     price: 599.0,
@@ -49,7 +49,7 @@ const Data2 = [
 
   },
   {
-    id: 5,
+    id: 9,
     img: gold ,
     name: "Gold watch",
     price: 439.0,
@@ -59,7 +59,7 @@ const Data2 = [
 
   },
   {
-    id: 6,
+    id: 10,
     img: white,
     name: "Sport watch",
     price: 450.0,
@@ -68,14 +68,14 @@ const Data2 = [
     category:'sport'
   },
   {
-    id: 7,
+    id: 11,
     img: watch ,
     name: "Summer watch ",
     price: 699.0,
     category:'summer'
   },
   {
-    id: 8,
+    id: 12,
     img: brown,
     name: "Brown watch ",
     price: 599.0,
