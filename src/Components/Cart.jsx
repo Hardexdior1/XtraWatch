@@ -32,13 +32,7 @@ const Cart = ({ cart, cartTotal,removeFromCart,clear }) => {
               <div>
                 <p className="name">{name}</p>
 
-                <div className="ratingWrap">
-                  <img src={rating} alt="" />
-                  <img src={rating} alt="" />
-                  <img src={rating} alt="" />
-                  <img src={rating} alt="" />
-                  <img src={rating} alt="" />
-                </div>
+              
 
                 <p>
                   {" "}

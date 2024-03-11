@@ -32,6 +32,9 @@
   padding: 0;
   transition: 0.6s;
 }
+.AppBlack .cart{
+  color: white;
+}
 .AppBlack a {
   color: white;
 }

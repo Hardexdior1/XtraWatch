@@ -1,12 +1,11 @@
 import React from "react";
 import "../Styles/Section4.css";
+import { FaStar } from "react-icons/fa";
 
 
-import rating from "../images/yellow star.jfif";
 
 import "../Styles/Testimonial.css";
 
-import quote from "../images/double-quote (1).jpg";
 
 
 
@@ -25,13 +24,12 @@ const Section4 = ({ change, change2,  addToCart, name, price, normalPrice, img, 
                 <div>
                   <p className="name">{name}</p>
 
-                  <div className="ratingWrap">
-                    <img src={rating} alt="" />
-                    <img src={rating} alt="" />
-                    <img src={rating} alt="" />
-                    <img src={rating} alt="" />
-                    <img src={rating} alt="" />
-                  </div>
+                  <div className="ratings">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </div>
 
                   <p>
                     {" "}

@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import "../Styles/NavBar.css";
 import logo from "../images/watch-front-home.png";
-import cartIcon from "../images/cart.PNG";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 const NavBar = ({ change4,length }) => {
   const toggleNav = useRef();
   const toggleHeader = useRef();
-
+const icon=useRef()
   const showNav = () => {
     toggleNav.current.classList.remove("ul");
     toggleNav.current.classList.add("ulShow");
@@ -21,9 +21,11 @@ const NavBar = ({ change4,length }) => {
     if (window.scrollY > 120) {
       toggleHeader.current.classList.remove("header");
       toggleHeader.current.classList.add("fixed");
+   
     } else {
       toggleHeader.current.classList.add("header");
       toggleHeader.current.classList.remove("fixed");
+      
     }
   });
   return (
@@ -144,7 +146,8 @@ const NavBar = ({ change4,length }) => {
                 hideNav();
               }}>
               <div className="cartIcon">
-                <img src={cartIcon} alt="cartIcon" />
+
+<FaShoppingCart className="cart" ref={icon} />
                 <b className="length">{length}</b>
               </div>
             </Link>

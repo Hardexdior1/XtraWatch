@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/Section4.css";
-import rating from "../images/yellow star.jfif";
+import { FaStar } from "react-icons/fa";
 
 const Watches = ({ img, name, price, normalPrice, sale, addToCart }) => {
   return (
@@ -12,13 +12,12 @@ const Watches = ({ img, name, price, normalPrice, sale, addToCart }) => {
         <div>
           <p className="name">{name}</p>
 
-          <div className="ratingWrap">
-            <img src={rating} alt="" />
-            <img src={rating} alt="" />
-            <img src={rating} alt="" />
-            <img src={rating} alt="" />
-            <img src={rating} alt="" />
-          </div>
+          <div className="ratings">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </div>
 
           <p>
             {" "}
