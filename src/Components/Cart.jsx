@@ -17,7 +17,7 @@ const Cart = ({ cart, cartTotal,removeFromCart,clear }) => {
     </div>
       <div className="watchFlex watchFlex1">
         {cart.map((eachItem) => {
-          const { name, price, normalPrice, img, sale } = eachItem;
+          const { name, price, normalPrice, img, sale ,increaseCart} = eachItem;
 
           return (
             <div className="watchSub" key={eachItem.id}> 
@@ -38,6 +38,9 @@ const Cart = ({ cart, cartTotal,removeFromCart,clear }) => {
                   {" "}
                   <del>{normalPrice}</del>
                   <strong className="price">${price}</strong>
+
+                
+
                 </p>
 
                 {sale ? <b className="sale">Sale</b> : ""}

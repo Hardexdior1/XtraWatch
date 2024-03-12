@@ -116,4 +116,8 @@ html {
   left: 5%;
   right: 5%;
   bottom: 50%;
+  background-color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+ 
 }

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, json } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
 import NavBar from "./Components/NavBar";
 // import LandingPage from "./Components/LandingPage";
@@ -63,9 +63,17 @@ function App() {
 
   const cartTotal = cart.reduce((total, { price = 0 }) => total + price, 0);
 
-  console.log(cartTotal);
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
 
   const addToCart = (product) => {
+    setShowMessage(true)
+
     setCart((prev) => {
       const itemExit = cart.find((item) => item.id == product.id);
 
@@ -76,12 +84,16 @@ function App() {
 
       let timeoutId = setTimeout(() => {
         setMessage("");
+        setShowMessage(false)
       }, 2000);
 
       setTimeout(() => {
         clearTimeout(timeoutId);
+        
+
       }, 2000);
 
+      localStorage.setItem('cart',JSON.stringify([...prev,product]))
       return [...prev, product];
     });
   };
@@ -103,9 +115,17 @@ function App() {
     });
   };
 
+ 
+
   const clear = () => {
     setCart([]);
   };
+
+  const increaseCart = (item) => {
+    const length = cart.map((product) => product.price == item.price);
+    console.log(length);
+  };
+  const[showMessage,setShowMessage]=useState(false)
   return (
     <section className="App" ref={background}>
       {mode ? (
@@ -157,13 +177,14 @@ function App() {
                 cartTotal={cartTotal}
                 removeFromCart={removeFromCart}
                 clear={clear}
+                increaseCart={increaseCart}
               />
             }
           />
         </Routes>
         <Footer />
       </BrowserRouter>
-      <p className="message">{message}</p>
+      {showMessage?<p className="message">{message}</p>:''}
 
       <a className="top" href="#">
         ^
