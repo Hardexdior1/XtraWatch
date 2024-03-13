@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/Section4.css";
 import { FaStar } from "react-icons/fa";
 
 const Watches = ({ img, name, price, normalPrice, sale, addToCart }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  
   return (
     <div>
       <div className="watchSub">

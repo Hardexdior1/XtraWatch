@@ -72,7 +72,7 @@ function App() {
   }, []);
 
   const addToCart = (product) => {
-    setShowMessage(true)
+    setShowMessage(true);
 
     setCart((prev) => {
       const itemExit = cart.find((item) => item.id == product.id);
@@ -84,16 +84,14 @@ function App() {
 
       let timeoutId = setTimeout(() => {
         setMessage("");
-        setShowMessage(false)
+        setShowMessage(false);
       }, 2000);
 
       setTimeout(() => {
         clearTimeout(timeoutId);
-        
-
       }, 2000);
 
-      localStorage.setItem('cart',JSON.stringify([...prev,product]))
+      localStorage.setItem("cart", JSON.stringify([...prev, product]));
       return [...prev, product];
     });
   };
@@ -115,8 +113,6 @@ function App() {
     });
   };
 
- 
-
   const clear = () => {
     setCart([]);
   };
@@ -125,9 +121,10 @@ function App() {
     const length = cart.map((product) => product.price == item.price);
     console.log(length);
   };
-  const[showMessage,setShowMessage]=useState(false)
+  const [showMessage, setShowMessage] = useState(false);
   return (
     <section className="App" ref={background}>
+      <h1>hello</h1>
       {mode ? (
         <img
           className="mode"
@@ -184,7 +181,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-      {showMessage?<p className="message">{message}</p>:''}
+      {showMessage ? <p className="message">{message}</p> : ""}
 
       <a className="top" href="#">
         ^
