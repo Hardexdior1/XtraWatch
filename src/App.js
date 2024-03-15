@@ -124,7 +124,7 @@ function App() {
   const [showMessage, setShowMessage] = useState(false);
   return (
     <section className="App" ref={background}>
-      
+      <h1>lorem</h1>
       {mode ? (
         <img
           className="mode"
