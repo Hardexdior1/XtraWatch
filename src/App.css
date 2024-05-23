@@ -5,6 +5,11 @@
     padding: 0;
 } */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 .App {
   text-align: center;
 
@@ -118,4 +123,17 @@ html {
   bottom: 50%;
   
  
+}
+.increament{
+  display:flex;
+  align-items: center;
+  justify-items: center;
+
+}
+.increament span{
+  background-color:white;
+  color:black;
+  font-weight:bold;
+  display: block;
+
 }

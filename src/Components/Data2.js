@@ -18,6 +18,8 @@ const Data2 = [
     price: 399.0,
     category:'sport',
     sale: true,
+    quantity:1
+
 
   },
   {
@@ -27,7 +29,9 @@ const Data2 = [
     price: 399.0,
     normalPrice: 499.0,
     // sale: true,
-    category:'event'
+    category:'event',
+    quantity:1
+
 
   },
   {
@@ -37,15 +41,16 @@ const Data2 = [
     price: 699.0,
     category:'sport',
     sale: true,
-
-
+    quantity:1
   },
   {
     id: 8,
     img: blackWatch,
     name: "Lemon watch ",
     price: 599.0,
-    category:'summer'
+    category:'summer',
+    quantity:1
+
 
   },
   {
@@ -55,8 +60,7 @@ const Data2 = [
     price: 439.0,
     category:'event',
     sale: true,
-
-
+    quantity:1
   },
   {
     id: 10,
@@ -65,14 +69,18 @@ const Data2 = [
     price: 450.0,
     normalPrice: 600,
     sale: true,
-    category:'sport'
+    category:'sport',
+    quantity:1
+
   },
   {
     id: 11,
     img: watch ,
     name: "Summer watch ",
     price: 699.0,
-    category:'summer'
+    category:'summer',
+    quantity:1
+
   },
   {
     id: 12,
@@ -81,6 +89,8 @@ const Data2 = [
     price: 599.0,
     category:'event',
     sale: true,
+    quantity:1
+
 
 
   },

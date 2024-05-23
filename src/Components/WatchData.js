@@ -10,6 +10,7 @@ const Watches = [
     img: chromeWatch,
     name: "Chrome Watch",
     price: 399.0,
+    quantity:1
   },
   {
     id: 2,
@@ -18,18 +19,24 @@ const Watches = [
     price: 399.0,
     normalPrice: 499.0,
     sale: true,
+    quantity:1
+
   },
   {
     id: 3,
     img: goldWatch,
     name: "Gold Watch",
     price: 699.0,
+    quantity:1
+
   },
   {
     id: 4,
     img: blackWatch,
     name: "Black Watch",
     price: 599.0,
+    quantity:1
+
   },
 ];
 

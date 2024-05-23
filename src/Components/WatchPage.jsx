@@ -3,10 +3,10 @@ import Watches from "./Watches";
 import Data2 from "./Data2";
 import "../Styles/Section4.css";
 
-const WatchPage = ({ addToCart }) => {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+const WatchPage = ({ addToCart,  increase,storage }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [data, setData] = useState(Data2);
 
   const [productLength, setProductLength] = useState(
@@ -35,8 +35,6 @@ const WatchPage = ({ addToCart }) => {
     setData(event);
   };
 
-  
-
   const filter = (category) => {
     if (category == "all") {
       setData(Data2);
@@ -58,10 +56,6 @@ const WatchPage = ({ addToCart }) => {
             <h4>{productLength} </h4>
           </div>
           <div className="categoryWrap">
-            {/* <button onClick={all} className="btn btn1">All</button>
-<button onClick={sport} className="btn btn1 ">Sport</button>
-<button onClick={summer} className="btn btn1 ">Summer</button>
-<button onClick={event} className="btn btn1 ">Event</button> */}
 
             <select
               onClick={(event) => {
@@ -82,7 +76,10 @@ const WatchPage = ({ addToCart }) => {
           {data.map((eachData) => {
             return (
               <Watches
+              increase={()=>increase(eachData)}
+
                 key={eachData.id}
+                storage={storage}
                 {...eachData}
                 addToCart={() => addToCart(eachData)}
               />

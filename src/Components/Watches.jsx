@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../Styles/Section4.css";
 import { FaStar } from "react-icons/fa";
 
-const Watches = ({ img, name, price, normalPrice, sale, addToCart }) => {
+const Watches = ({ img, name, price, normalPrice, sale, addToCart,increase, storage}) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -32,7 +32,7 @@ const Watches = ({ img, name, price, normalPrice, sale, addToCart }) => {
 
           <button 
             onClick={() => {
-              addToCart();
+              addToCart()
             }}>
             Add to cart{" "}
           </button>

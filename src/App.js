@@ -19,20 +19,9 @@ import Testimonial from "./Components/Testimonial";
 import Watches from "./Components/Watches";
 import WatchPage from "./Components/WatchPage";
 import Contact from "./Components/Contact";
-// import UncontrolledExample from "./Components/UnControlledExample";
-import data3 from "./Components/TestingData";
 import Cart from "./Components/Cart";
+import Checkout from "./Components/Checkout";
 // ren .git .git_backup
-
-// Create your own styling
-
-//
-
-//   return (
-//
-//   );
-// };
-
 function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,8 +29,6 @@ function App() {
   const background = useRef();
   const change = useRef();
   const change2 = useRef();
-  const change3 = useRef();
-  const change4 = useRef();
 
   const [message, setMessage] = useState("");
 
@@ -55,21 +42,25 @@ function App() {
     background.current.classList.add("App");
     background.current.classList.remove("AppBlack");
   };
-  const [drag, setDrag] = useState(true);
 
   const [cart, setCart] = useState([]);
+  console.log(cart)
+  // let quantity = cart.map((item)=>item.quantity)
   let length = cart.length;
-  console.log(length);
+  const cartTotal = cart.reduce(
+    (total, price) => total + price.price * price.quantity,
+    0
+  );
 
-  const cartTotal = cart.reduce((total, { price = 0 }) => total + price, 0);
+  
+  // useEffect(() => {
+  //   const savedCart = localStorage.getItem("cart");
 
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
-  }, []);
+  //   if (savedCart) {
+  //     setCart(JSON.parse(savedCart));
+  //   }
+  // }, []);
+  
 
   const addToCart = (product) => {
     setShowMessage(true);
@@ -91,20 +82,23 @@ function App() {
         clearTimeout(timeoutId);
       }, 2000);
 
-      localStorage.setItem("cart", JSON.stringify([...prev, product]));
-      return [...prev, product];
+      // localStorage.setItem("cart", JSON.stringify([...prev, product]));
+      return [...prev, { ...product, quantity: 1 }];
     });
   };
-
   const removeFromCart = (item) => {
     setCart((currentCart) => {
       const indexOfItemToRemove = currentCart.findIndex(
         (cartItem) => cartItem.id === item.id
       );
 
+      // localStorage.setItem("cart", JSON.stringify([...currentCart, item]));
+
+
       if (indexOfItemToRemove === -1) {
         return currentCart;
       }
+
 
       return [
         ...currentCart.slice(0, indexOfItemToRemove),
@@ -112,6 +106,24 @@ function App() {
       ];
     });
   };
+  const incrementQuantity = (product) => {
+    // setQuantity(product.quantity+1)
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item === product ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  // const decreamentQuantity = (product) => {
+  //   setCart((prevCart) =>
+  //     prevCart.map((item) =>
+  //       item === product ? { ...item, quantity: item.quantity + 1 } : item
+  //     )
+  //   );
+  // };
+
+  
 
   const clear = () => {
     setCart([]);
@@ -166,6 +178,19 @@ function App() {
           />
           <Route path="/Contact" element={<Contact />} />
           <Route
+            path="/Checkout"
+            element={
+              <Checkout
+                cart={cart}
+                cartTotal={cartTotal}
+                removeFromCart={removeFromCart}
+                clear={clear}
+                // quantity={quantity}
+              />
+            }
+          />
+
+          <Route
             path="/Cart"
             element={
               <Cart
@@ -173,6 +198,7 @@ function App() {
                 cartTotal={cartTotal}
                 removeFromCart={removeFromCart}
                 clear={clear}
+                incrementQuantity={incrementQuantity}
                 increaseCart={increaseCart}
               />
             }
@@ -185,6 +211,7 @@ function App() {
       <a className="top" href="#">
         ^
       </a>
+      <a href="">REFRESH</a>
     </section>
   );
 }
