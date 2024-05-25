@@ -2,48 +2,56 @@ import React from "react";
 import "../Styles/Section4.css";
 import { FaStar } from "react-icons/fa";
 
-
+import { Link } from "react-router-dom";
 
 import "../Styles/Testimonial.css";
 
-
-
-
-const Section4 = ({ change, change2,  addToCart, name, price, normalPrice, img, sale  }) => {
+const Section4 = ({
+  change,
+  change2,
+  addToCart,
+  name,
+  price,
+  normalPrice,
+  img,
+  sale,
+  id,
+}) => {
   return (
     <div>
       <section className="section4">
-       
-
         <div className="">
-
-              <div className="watchSub" >
-                <div className="watchCarrier">
-                  <img src={img} alt={name} />
-                </div>
-                <div>
-                  <p className="name">{name}</p>
-
-                  <div className="ratings">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
-            </div>
-
-                  <p>
-                    {" "}
-                    <del>{normalPrice}</del>
-                    <strong className="price">${price}</strong>
-                  </p>
-
-                  <button onClick={()=>{
-                    addToCart()
-                  }}>Add to cart </button>
-                  {sale ? <b className="sale">Sale</b> : ""}
-                </div>
+          <div className="watchSub">
+            <Link to={"/Section4/"+id}>
+              <div className="watchCarrier">
+                <img src={img} alt={name} />
               </div>
-        
+            </Link>
+            <div>
+              <p className="name">{name}</p>
+
+              <div className="ratings">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </div>
+
+              <p>
+                {" "}
+                <del>{normalPrice}</del>
+                <strong className="price">${price}</strong>
+              </p>
+
+              <button
+                onClick={() => {
+                  addToCart();
+                }}>
+                Add to cart{" "}
+              </button>
+              {sale ? <b className="sale">Sale</b> : ""}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -80,8 +88,6 @@ const Section4 = ({ change, change2,  addToCart, name, price, normalPrice, img, 
           </div>
         </div>
       </section> */}
-
-     
     </div>
   );
 };

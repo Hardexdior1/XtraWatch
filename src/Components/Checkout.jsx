@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import swal from "sweetalert";
 import "../Styles/Checkout.css";
 import { Country, State, City } from "country-state-city";
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = ({
   cart,
@@ -11,6 +12,18 @@ const Checkout = ({
   clear,
   incrementQuantity,
 }) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cart.length == 0) {
+      // Redirect to the homepage if the cart is empty
+      navigate('/Cart');
+    }
+    else{
+
+    }
+  }, []);
   const [state, handleSubmit] = useForm("xpzveprv");
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -20,17 +33,11 @@ const Checkout = ({
 
   const [Email, setEmail] = useState("");
   const [countries, setCountries] = useState("");
+  console.log(countries);
   const [address, setAddress] = useState("");
-  const [allCountries, SetCountry] = useState(Country.getAllCountries());
-  const [allStates, setAllState] = useState(State.getAllStates(countries));
   const [name, setName] = useState("");
   const [userOrderCode, setUserOrderCode] = useState("");
-
-  // let random=Math.floor(Math.random()*500)
-  // let code=random+name+Email.substring(0,5)
-
   let code = "#"+Math.floor(Math.random() * 500) + name;
-
   const clearForm = () => {
     setEmail("");
     setAddress("");
@@ -40,7 +47,6 @@ const Checkout = ({
     console.log(e.target.value);
     setCountries(e.target.value);
   };
-
   const handleName = (e) => {
     setName(e.target.value);
     console.log(e.target.value);
@@ -91,67 +97,80 @@ const Checkout = ({
   // xwkgjlae
 
   return (
-    <div className="checkoutWrap">
-      <form onSubmit={handleSubmitForm} method="post">
-        {cart.map((item) => {
-          return (
-            <div className="flexQuantity">
-              <input
-                readOnly
-                name="ProductInfo"
-                value={
-                  "Product: " +
-                  item.name +
-                  " - " +
-                  " Quantity: " +
-                  item.quantity
-                }
-              />
-              <br /> <br />
-            </div>
-          );
+   <div>
+     {cart.length>0?<div className="checkoutWrap">
+    <form onSubmit={handleSubmitForm} method="post">
+      {cart.map((item) => {
+        return (
+          <div className="flexQuantity">
+            <input
+              readOnly
+              name="ProductInfo"
+              value={
+                "Product: " +
+                item.name +
+                " - " +
+                " Quantity: " +
+                item.quantity
+              }
+            />
+            <br /> <br />
+          </div>
+        );
+      })}
+
+      <input
+        onChange={handleName}
+        name="Name"
+        placeholder="your name"
+        value={name}
+      />
+
+      <input
+        onChange={handleEmail}
+        name="Email"
+        placeholder="your email"
+        value={Email}
+      />
+      <textarea
+        onChange={handleAddress}
+        name="Address"
+        placeholder="Delivery Address"
+        value={address}
+        rows={3}></textarea>
+
+      <select name="Country" id="" onChange={handleCountry}>
+        <option value=""> choose your country </option>
+        {Country.getAllCountries().map((country) => {
+          return <option value={country.isoCode}> {country.name} </option>;
         })}
+      </select>
 
-        <input
-          onChange={handleName}
-          name="Name"
-          placeholder="your name"
-          value={name}
-        />
 
-        <input
-          onChange={handleEmail}
-          name="Email"
-          placeholder="your email"
-          value={Email}
-        />
-        <textarea
-          onChange={handleAddress}
-          name="Address"
-          placeholder="Delivery Address"
-          value={address}
-          rows={3}></textarea>
+      <select name="State" id="">
+      <option value=""> choose your state </option>
 
-        <select name="Country" id="" onChange={handleCountry}>
-          <option value=""> choose your country </option>
-          {allCountries.map((country) => {
-            return <option value={country.name}> {country.name} </option>;
-          })}
-        </select>
-        <input type="text" name="orderCode" value={userOrderCode} readOnly className="hideOrder"/>
+      {State.getStatesOfCountry(countries).map((item)=>{
+        <option value={item.isoCode}>
+            {item.name}
+        </option>
+      })}
+      </select>
+      <input type="text" name="orderCode" value={userOrderCode} readOnly className="hideOrder"/>
 
-        <input type="text" readOnly name="Total" value={formattedPrice} />
+      <input type="text" readOnly name="Total" value={formattedPrice} />
 
-        <button
-          type="submit"
-          onClick={() => {
-            setUserOrderCode(code);
-          }}>
-          submit
-        </button>
-        {/* <textarea name="ProductName" id="" readOnly value={name+ " "+quantity}></textarea> */}
-      </form>
-    </div>
+      <button
+        type="submit"
+        onClick={() => {
+          setUserOrderCode(code);
+        }}>
+        submit
+      </button>
+      {/* <textarea name="ProductName" id="" readOnly value={name+ " "+quantity}></textarea> */}
+    </form>
+  </div>:""}
+   </div>
   );
 };
 

@@ -2,25 +2,19 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, json } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
 import NavBar from "./Components/NavBar";
-// import LandingPage from "./Components/LandingPage";
 import About from "./Components/About";
 import Footer from "./Components/Footer";
-
-import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-
 import dark from "./images/darlmode.png";
 import light from "./images/lightmode.png";
 import Faq from "./Components/Faq";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Testimonial from "./Components/Testimonial";
-import Watches from "./Components/Watches";
 import WatchPage from "./Components/WatchPage";
 import Contact from "./Components/Contact";
 import Cart from "./Components/Cart";
 import Checkout from "./Components/Checkout";
+import WatchInfo from "./Pages/WatchInfo";
 // ren .git .git_backup
 function App() {
   useEffect(() => {
@@ -44,35 +38,38 @@ function App() {
   };
 
   const [cart, setCart] = useState([]);
-  console.log(cart)
-  // let quantity = cart.map((item)=>item.quantity)
-  let length = cart.length;
+    // const [length,setLength]=useState(cart.length)
+
+
+useEffect(() => {
+  const savedCart = localStorage.getItem('cart');
+  if (savedCart) {
+    const parsedCart = JSON.parse(savedCart);
+     setCart(parsedCart)
+  }
+  
+}, []);
+
+
+
+
   const cartTotal = cart.reduce(
     (total, price) => total + price.price * price.quantity,
     0
   );
 
   
-  // useEffect(() => {
-  //   const savedCart = localStorage.getItem("cart");
 
-  //   if (savedCart) {
-  //     setCart(JSON.parse(savedCart));
-  //   }
-  // }, []);
-  
+
 
   const addToCart = (product) => {
     setShowMessage(true);
-
     setCart((prev) => {
       const itemExit = cart.find((item) => item.id == product.id);
-
       if (itemExit) {
         return prev;
       }
       setMessage("Product has been added to cart");
-
       let timeoutId = setTimeout(() => {
         setMessage("");
         setShowMessage(false);
@@ -81,8 +78,7 @@ function App() {
       setTimeout(() => {
         clearTimeout(timeoutId);
       }, 2000);
-
-      // localStorage.setItem("cart", JSON.stringify([...prev, product]));
+      localStorage.setItem('cart', JSON.stringify([...prev, {...product, quantity: 1 }]));
       return [...prev, { ...product, quantity: 1 }];
     });
   };
@@ -91,29 +87,64 @@ function App() {
       const indexOfItemToRemove = currentCart.findIndex(
         (cartItem) => cartItem.id === item.id
       );
-
-      // localStorage.setItem("cart", JSON.stringify([...currentCart, item]));
-
-
       if (indexOfItemToRemove === -1) {
         return currentCart;
       }
-
-
-      return [
+      const updatedCart=[
         ...currentCart.slice(0, indexOfItemToRemove),
         ...currentCart.slice(indexOfItemToRemove + 1),
       ];
+      // localStorage.setItem('cart', JSON.stringify([...prev, {...product, quantity: 1 }]));
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      return updatedCart
     });
   };
-  const incrementQuantity = (product) => {
-    // setQuantity(product.quantity+1)
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item === product ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
+  // 
+
+ 
+
+    const incrementQuantity = (product) => {
+      setCart((prev) => {
+        let quat = prev.map((item) =>
+          item === product? {...item, quantity: item.quantity + 1 } : item
+        );
+        localStorage.setItem('cart', JSON.stringify(quat));
+        return quat;
+      });
+    };
+    
+    
+    // const decrementQuantity = (product) => {
+    //   setCart((prev) => {
+    //     let quat = prev.map((item) =>
+    //       item === product? {...item, quantity: item.quantity >0? item.quantity-1:item } : item
+    //     );
+    //     localStorage.setItem('cart', JSON.stringify(quat));
+    //     return quat;
+    //   });
+    // };
+// console.log(699+599)
+    const decrementQuantity = (product) => {
+      setCart((prev) => {
+        // Map through the previous cart state
+        let updatedCart = prev.map((item) => {
+          // If the current item matches the product we want to decrement
+          if (item.id === product.id) {
+            // Only decrement the quantity if it's greater than 0
+            return {...item, quantity: item.quantity > 1? item.quantity - 1 : 1};
+          }
+          // Otherwise, return the item unchanged
+          return item;
+        });
+    
+        // Update the local storage with the new cart state
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    
+        // Return the updated cart state
+        return updatedCart;
+      });
+    };
+    
 
   // const decreamentQuantity = (product) => {
   //   setCart((prevCart) =>
@@ -129,10 +160,7 @@ function App() {
     setCart([]);
   };
 
-  const increaseCart = (item) => {
-    const length = cart.map((product) => product.price == item.price);
-    console.log(length);
-  };
+  
   const [showMessage, setShowMessage] = useState(false);
   return (
     <section className="App" ref={background}>
@@ -158,7 +186,7 @@ function App() {
         />
       )}
       <BrowserRouter>
-        <NavBar length={length} />
+        <NavBar length={cart} />
         <Routes>
           <Route
             path="/"
@@ -176,6 +204,10 @@ function App() {
             path="/WatchPage"
             element={<WatchPage addToCart={addToCart} />}
           />
+                    <Route path="/Watches/:id" element={<WatchInfo />} />
+                    <Route path="/Section4/:id" element={<WatchInfo />} />
+
+
           <Route path="/Contact" element={<Contact />} />
           <Route
             path="/Checkout"
@@ -185,7 +217,7 @@ function App() {
                 cartTotal={cartTotal}
                 removeFromCart={removeFromCart}
                 clear={clear}
-                // quantity={quantity}
+                
               />
             }
           />
@@ -199,7 +231,7 @@ function App() {
                 removeFromCart={removeFromCart}
                 clear={clear}
                 incrementQuantity={incrementQuantity}
-                increaseCart={increaseCart}
+                decrementQuantity={decrementQuantity}
               />
             }
           />
@@ -211,7 +243,6 @@ function App() {
       <a className="top" href="#">
         ^
       </a>
-      <a href="">REFRESH</a>
     </section>
   );
 }

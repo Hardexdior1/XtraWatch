@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Watches from "./Watches";
 import Data2 from "./Data2";
 import "../Styles/Section4.css";
+import { Link } from "react-router-dom";
 
 const WatchPage = ({ addToCart,  increase,storage }) => {
   useEffect(() => {
@@ -74,16 +75,13 @@ const WatchPage = ({ addToCart,  increase,storage }) => {
           {/* <h1>{data.length}</h1> */}
 
           {data.map((eachData) => {
-            return (
-              <Watches
+            return  <Watches
               increase={()=>increase(eachData)}
-
                 key={eachData.id}
                 storage={storage}
                 {...eachData}
                 addToCart={() => addToCart(eachData)}
               />
-            );
           })}
         </div>
       </div>

@@ -148,7 +148,7 @@ const icon=useRef()
               <div className="cartIcon">
 
 <FaShoppingCart className="cart" ref={icon} />
-                <b className="length">{length}</b>
+                <b className="length">{length.length}</b>
               </div>
             </Link>
           </div>

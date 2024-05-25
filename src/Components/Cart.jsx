@@ -7,31 +7,23 @@ import { FcDeleteRow } from "react-icons/fc";
 import { MdDelete } from "react-icons/md";
 import { GiPriceTag } from "react-icons/gi";
 import { Link } from "react-router-dom";
-
-
 const Cart = ({
   cart,
   cartTotal,
   removeFromCart,
   clear,
   incrementQuantity,
+  decrementQuantity
 }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
-
-  // console.log(incrementQuantity);
-  // const [quantity,setQuantity]=useState()
-  // console.log(quantity)
-  // Format the total price
   const formattedPrice = formatter.format(cartTotal);
-
-  let name = cart.map((name) => name.name);
-
   return (
     <div>
     
@@ -50,17 +42,18 @@ const Cart = ({
       </center>
 
      {cart.length>0? <div className="cartWrapper">
+
         <div className="cartWrap">
           {cart.map((eachItem) => {
-            const {
-              name,
-              price,
-              normalPrice,
-              img,
-              sale,
-              increaseCart,
-              quantity,
-            } = eachItem;
+            // const {
+            //   name,
+            //   price,
+            //   normalPrice,
+            //   img,
+            //   sale,
+            //   increaseCart,
+            //   quantity,
+            // } = eachItem;
 
             return (
               <div key={eachItem.id}>
@@ -69,11 +62,11 @@ const Cart = ({
                     <div className="flexPriceAndImage">
                       <div className="watchAndNameCarrier">
                         <div>
-                          <img src={img} alt="product-img" />
+                          <img src={eachItem.img} alt="product-img" />
                         </div>
 
                         <div>
-                          <h4 className="name">{name}</h4>
+                          <h4 className="name">{eachItem.name}</h4>
                           <div className="flexSeller">
                             <p className="seller">seller: </p>
                             <p>xtrawatch</p>
@@ -82,9 +75,9 @@ const Cart = ({
                       </div>
 
                       <div>
-                        <h2 className="price"> ${price}</h2>
+                        <h2 className="price"> ${eachItem.price}</h2>
                         <h4 className="del">
-                          <del>{normalPrice} </del>
+                          <del>{eachItem.normalPrice} </del>
                         </h4>
                       </div>
                     </div>
@@ -102,8 +95,10 @@ const Cart = ({
                       </div>
 
                       <div className="btnCarrier">
-                        <button>-</button>
-                        <p>{quantity}</p>
+                      <button  onClick={()=>{
+                          decrementQuantity(eachItem)
+                        }}>-</button>
+                        <p>{eachItem.quantity}</p>
                         <button
                           onClick={() => {
                             incrementQuantity(eachItem);
@@ -134,7 +129,8 @@ const Cart = ({
             </button>
           </Link>
         </div>
-      </div>:<Link to="/WatchPage" >
+      </div>
+      :<Link to="/WatchPage" >
             
             <button>
               continue shopping
