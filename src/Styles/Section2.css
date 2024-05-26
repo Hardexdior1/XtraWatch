@@ -10,7 +10,9 @@
 .section2Wrap img{
     margin-bottom: 0;
 }
-
+.section2Wrap{
+    padding: 5%;
+}
 .section2Wrap .white{
     color: #0c0c0c;
     font-size: 19px;

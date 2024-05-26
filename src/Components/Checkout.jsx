@@ -21,10 +21,10 @@ const Checkout = ({
       navigate('/Cart');
     }
     else{
-
+      // xpzveprv
     }
   }, []);
-  const [state, handleSubmit] = useForm("xpzveprv");
+  const [state, handleSubmit] = useForm("mzbnqygg"); 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -86,12 +86,18 @@ const Checkout = ({
       });
       handleSubmit(e);
       clearForm();
+      clear()
+
     } else {
       swal({
         title: "oops!",
         text: "please fill all the empty input! and make sure you're using a valid email address",
         icon: "error",
+        
       });
+
+    
+
     }
   };
   // xwkgjlae
@@ -132,6 +138,15 @@ const Checkout = ({
         placeholder="your email"
         value={Email}
       />
+   
+
+      <select name="Country" id="" onChange={handleCountry}>
+        <option value=""> choose your country </option>
+        {Country.getAllCountries().map((country) => {
+          return <option value={country.name}> {country.name} </option>;
+        })}
+      </select>
+
       <textarea
         onChange={handleAddress}
         name="Address"
@@ -139,15 +154,8 @@ const Checkout = ({
         value={address}
         rows={3}></textarea>
 
-      <select name="Country" id="" onChange={handleCountry}>
-        <option value=""> choose your country </option>
-        {Country.getAllCountries().map((country) => {
-          return <option value={country.isoCode}> {country.name} </option>;
-        })}
-      </select>
 
-
-      <select name="State" id="">
+      {/* <select name="State" id="">
       <option value=""> choose your state </option>
 
       {State.getStatesOfCountry(countries).map((item)=>{
@@ -155,21 +163,29 @@ const Checkout = ({
             {item.name}
         </option>
       })}
-      </select>
+      </select> */}
       <input type="text" name="orderCode" value={userOrderCode} readOnly className="hideOrder"/>
 
-      <input type="text" readOnly name="Total" value={formattedPrice} />
+      <h3><b>Total:</b></h3>
+
+      <input type="text" readOnly name="Total" value={formattedPrice} className="total"/>
 
       <button
         type="submit"
+        className="submit"
         onClick={() => {
           setUserOrderCode(code);
+
+
+              // Redirect to the homepage if the cart is empty
         }}>
         submit
-      </button>
+      </button> <br /> <br /> <br />
+
+      {/* <button onClick={clear}> clear </button> */}
       {/* <textarea name="ProductName" id="" readOnly value={name+ " "+quantity}></textarea> */}
     </form>
-  </div>:""}
+  </div>: <p className="orderMessage">your order is being processed... go to watches page to order more items </p>}
    </div>
   );
 };

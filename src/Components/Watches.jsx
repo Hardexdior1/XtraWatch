@@ -28,6 +28,7 @@ console.log(id)
               <FaStar />
             </div>
 
+
           <p>
             {" "}
             <del>{normalPrice}</del>

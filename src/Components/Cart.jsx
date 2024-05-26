@@ -45,15 +45,7 @@ const Cart = ({
 
         <div className="cartWrap">
           {cart.map((eachItem) => {
-            // const {
-            //   name,
-            //   price,
-            //   normalPrice,
-            //   img,
-            //   sale,
-            //   increaseCart,
-            //   quantity,
-            // } = eachItem;
+
 
             return (
               <div key={eachItem.id}>

@@ -21,12 +21,12 @@ import dollars from '../images/dollars.PNG'
 const Section2 = () => {
   return (
     <div>
-      <section className="section2Wrap ">
+      <section className="section2Wrap">
         <div className="secondWrap">
           <div className="subCarrier">
-            <div>
+            <center>
               <img src={clock} alt="clockImg" />
-            </div>
+            </center>
             <div>
               <h4>Extraordinery performance </h4>
               <p>
@@ -36,9 +36,9 @@ const Section2 = () => {
           </div>
 
           <div className="subCarrier wrapCheck">
-            <div>
+            <center>
               <img src={batteryLife} alt="clockImg" />
-            </div>
+            </center>
             <div>
               <h4>Excellent battery life </h4>
               <p>A smartwatch is a wearable computer in the form of a watch.</p>
@@ -46,9 +46,9 @@ const Section2 = () => {
           </div>
 
           <div className="subCarrier">
-            <div>
+            <center>
               <img src={link} alt="clockImg" />
-            </div>
+            </center>
             <div>
               <h4>Connectable to android/ios </h4>
               <p>
@@ -58,15 +58,15 @@ const Section2 = () => {
           </div>
         </div>
 
-        <div className="imgCarrier">
+        <center className="imgCarrier">
           <img className="clockImg" src={features} alt="featuresImg" />
-        </div>
+        </center>
 
         <div className="secondWrap secondWrap2">
           <div className="subCarrier">
-            <div>
+            <center>
               <img src={calender} alt="clockImg" />
-            </div>
+            </center>
             <div>
               <h4>Show time & date</h4>
               <p>
@@ -76,9 +76,9 @@ const Section2 = () => {
           </div>
 
           <div className="subCarrier">
-            <div>
+            <center>
               <img src={dollars} alt="clockImg" />
-            </div>
+            </center>
             <div>
               <h4>Affordable price </h4>
               <p>
@@ -88,9 +88,9 @@ const Section2 = () => {
           </div>
 
           <div className="subCarrier">
-            <div>
+            <center>
               <img src={clock2} alt="clockImg" />
-            </div>
+            </center>
             <div>
               <h4>Best Quality and design </h4>
               <p>

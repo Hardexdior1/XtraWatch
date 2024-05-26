@@ -15,6 +15,7 @@ import Contact from "./Components/Contact";
 import Cart from "./Components/Cart";
 import Checkout from "./Components/Checkout";
 import WatchInfo from "./Pages/WatchInfo";
+import Chart from "./Components/Chart";
 // ren .git .git_backup
 function App() {
   useEffect(() => {
@@ -38,35 +39,27 @@ function App() {
   };
 
   const [cart, setCart] = useState([]);
-    // const [length,setLength]=useState(cart.length)
+  // const [length,setLength]=useState(cart.length)
 
-
-useEffect(() => {
-  const savedCart = localStorage.getItem('cart');
-  if (savedCart) {
-    const parsedCart = JSON.parse(savedCart);
-     setCart(parsedCart)
-  }
-  
-}, []);
-
-
-
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      const parsedCart = JSON.parse(savedCart);
+      setCart(parsedCart);
+    }
+  }, []);
 
   const cartTotal = cart.reduce(
     (total, price) => total + price.price * price.quantity,
     0
   );
 
-  
-
-
-
   const addToCart = (product) => {
     setShowMessage(true);
     setCart((prev) => {
       const itemExit = cart.find((item) => item.id == product.id);
       if (itemExit) {
+        alert("item already in cart");
         return prev;
       }
       setMessage("Product has been added to cart");
@@ -78,7 +71,10 @@ useEffect(() => {
       setTimeout(() => {
         clearTimeout(timeoutId);
       }, 2000);
-      localStorage.setItem('cart', JSON.stringify([...prev, {...product, quantity: 1 }]));
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...prev, { ...product, quantity: 1 }])
+      );
       return [...prev, { ...product, quantity: 1 }];
     });
   };
@@ -90,77 +86,65 @@ useEffect(() => {
       if (indexOfItemToRemove === -1) {
         return currentCart;
       }
-      const updatedCart=[
+      const updatedCart = [
         ...currentCart.slice(0, indexOfItemToRemove),
         ...currentCart.slice(indexOfItemToRemove + 1),
       ];
       // localStorage.setItem('cart', JSON.stringify([...prev, {...product, quantity: 1 }]));
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
-      return updatedCart
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
     });
   };
-  // 
+  //
 
- 
-
-    const incrementQuantity = (product) => {
-      setCart((prev) => {
-        let quat = prev.map((item) =>
-          item === product? {...item, quantity: item.quantity + 1 } : item
-        );
-        localStorage.setItem('cart', JSON.stringify(quat));
-        return quat;
-      });
-    };
-    
-    
-    // const decrementQuantity = (product) => {
-    //   setCart((prev) => {
-    //     let quat = prev.map((item) =>
-    //       item === product? {...item, quantity: item.quantity >0? item.quantity-1:item } : item
-    //     );
-    //     localStorage.setItem('cart', JSON.stringify(quat));
-    //     return quat;
-    //   });
-    // };
-// console.log(699+599)
-    const decrementQuantity = (product) => {
-      setCart((prev) => {
-        // Map through the previous cart state
-        let updatedCart = prev.map((item) => {
-          // If the current item matches the product we want to decrement
-          if (item.id === product.id) {
-            // Only decrement the quantity if it's greater than 0
-            return {...item, quantity: item.quantity > 1? item.quantity - 1 : 1};
-          }
-          // Otherwise, return the item unchanged
-          return item;
-        });
-    
-        // Update the local storage with the new cart state
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-    
-        // Return the updated cart state
-        return updatedCart;
-      });
-    };
-    
-
-  // const decreamentQuantity = (product) => {
-  //   setCart((prevCart) =>
-  //     prevCart.map((item) =>
-  //       item === product ? { ...item, quantity: item.quantity + 1 } : item
-  //     )
-  //   );
-  // };
-
-  
-
-  const clear = () => {
-    setCart([]);
+  const incrementQuantity = (product) => {
+    setCart((prev) => {
+      let quat = prev.map((item) =>
+        item === product ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      localStorage.setItem("cart", JSON.stringify(quat));
+      return quat;
+    });
   };
 
-  
+  // const decrementQuantity = (product) => {
+  //   setCart((prev) => {
+  //     let quat = prev.map((item) =>
+  //       item === product? {...item, quantity: item.quantity >0? item.quantity-1:item } : item
+  //     );
+  //     localStorage.setItem('cart', JSON.stringify(quat));
+  //     return quat;
+  //   });
+  // };
+  // console.log(699+599)
+  const decrementQuantity = (product) => {
+    setCart((prev) => {
+      // Map through the previous cart state
+      let updatedCart = prev.map((item) => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity > 1 ? item.quantity - 1 : 1,
+          };
+        }
+        return item;
+      });
+
+      // Update the local storage with the new cart state
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      // Return the updated cart state
+      return updatedCart;
+    });
+  };
+
+  const clear = () => {
+    setCart((prev) => {
+      prev = [];
+      localStorage.setItem("cart", JSON.stringify(prev));
+      return prev;
+    });
+  };
+
   const [showMessage, setShowMessage] = useState(false);
   return (
     <section className="App" ref={background}>
@@ -204,9 +188,14 @@ useEffect(() => {
             path="/WatchPage"
             element={<WatchPage addToCart={addToCart} />}
           />
-                    <Route path="/Watches/:id" element={<WatchInfo />} />
-                    <Route path="/Section4/:id" element={<WatchInfo />} />
-
+          <Route
+            path="/Watches/:id"
+            element={<WatchInfo addToCart={addToCart} />}
+          />
+          <Route
+            path="/Section4/:id"
+            element={<WatchInfo addToCart={addToCart} />}
+          />
 
           <Route path="/Contact" element={<Contact />} />
           <Route
@@ -217,7 +206,6 @@ useEffect(() => {
                 cartTotal={cartTotal}
                 removeFromCart={removeFromCart}
                 clear={clear}
-                
               />
             }
           />
@@ -243,6 +231,8 @@ useEffect(() => {
       <a className="top" href="#">
         ^
       </a>
+
+      {/* <Chart /> */}
     </section>
   );
 }

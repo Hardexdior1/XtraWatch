@@ -1,0 +1,61 @@
+.w-name{
+    color: #262626;
+    font-size: 36px;
+}
+
+.rate{
+    color: goldenrod;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.flexInfo{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.infoText{
+    text-align: left;
+    display: grid;
+    gap: 8px;
+}
+
+.infoPrice{
+color: #0088ff;
+font-size: 28px
+
+;
+}
+
+.texts{
+    color: #676767;
+    font-size: 20px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.infoWrap{
+    padding: 10px 40px;
+}
+
+@media (max-width:700px) {
+    .flexInfo{
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+}
+
+.infoWrap button{
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    background-color: #0088ff;
+    display: inline-block;
+    margin-top: 20px;
+}
