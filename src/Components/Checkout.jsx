@@ -1,30 +1,26 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import swal from "sweetalert";
 import "../Styles/Checkout.css";
 import { Country, State, City } from "country-state-city";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Checkout = ({
   cart,
   cartTotal,
-  removeFromCart,
   clear,
-  incrementQuantity,
 }) => {
-
   const navigate = useNavigate();
 
   useEffect(() => {
     if (cart.length == 0) {
-      // Redirect to the homepage if the cart is empty
-      navigate('/Cart');
-    }
-    else{
+      // Redirect to the homepage if the cart is empty and a user is trying to go to the checkout page
+      navigate("/Cart");
+    } else {
       // xpzveprv
     }
   }, []);
-  const [state, handleSubmit] = useForm("mzbnqygg"); 
+  const [state, handleSubmit] = useForm("mzbnqygg");
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -37,7 +33,7 @@ const Checkout = ({
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [userOrderCode, setUserOrderCode] = useState("");
-  let code = "#"+Math.floor(Math.random() * 500) + name;
+  let code = "#" + Math.floor(Math.random() * 500) + name;
   const clearForm = () => {
     setEmail("");
     setAddress("");
@@ -86,76 +82,65 @@ const Checkout = ({
       });
       handleSubmit(e);
       clearForm();
-      clear()
-
+      clear();
     } else {
       swal({
         title: "oops!",
         text: "please fill all the empty input! and make sure you're using a valid email address",
         icon: "error",
-        
       });
-
-    
-
     }
   };
   // xwkgjlae
 
   return (
-   <div>
-     {cart.length>0?<div className="checkoutWrap">
-    <form onSubmit={handleSubmitForm} method="post">
-      {cart.map((item) => {
-        return (
-          <div className="flexQuantity">
+    <div>
+      {cart.length > 0 ? (
+        <div className="checkoutWrap">
+          <form onSubmit={handleSubmitForm} method="post">
+            {cart.map((item) => {
+              return (
+                <div className="flexQuantity">
+                  <input
+                    readOnly
+                    name="ProductInfo"
+                    value={
+                      "Product: " +
+                      item.name +
+                      " - " +
+                      " Quantity: " +
+                      item.quantity
+                    }
+                  />
+                  <br /> <br />
+                </div>
+              );
+            })}
             <input
-              readOnly
-              name="ProductInfo"
-              value={
-                "Product: " +
-                item.name +
-                " - " +
-                " Quantity: " +
-                item.quantity
-              }
+              onChange={handleName}
+              name="Name"
+              placeholder="your name"
+              value={name}
             />
-            <br /> <br />
-          </div>
-        );
-      })}
-
-      <input
-        onChange={handleName}
-        name="Name"
-        placeholder="your name"
-        value={name}
-      />
-
-      <input
-        onChange={handleEmail}
-        name="Email"
-        placeholder="your email"
-        value={Email}
-      />
-   
-
-      <select name="Country" id="" onChange={handleCountry}>
-        <option value=""> choose your country </option>
-        {Country.getAllCountries().map((country) => {
-          return <option value={country.name}> {country.name} </option>;
-        })}
-      </select>
-
-      <textarea
-        onChange={handleAddress}
-        name="Address"
-        placeholder="Delivery Address"
-        value={address}
-        rows={3}></textarea>
-
-
-      {/* <select name="State" id="">
+            <input
+              onChange={handleEmail}
+              name="Email"
+              placeholder="your email"
+              value={Email}
+            />
+            <select name="Country" id="" onChange={handleCountry}>
+              <option value=""> choose your country </option>
+              {Country.getAllCountries().map((country) => {
+                return <option value={country.name}> {country.name} </option>;
+              })}
+            </select>
+            <textarea
+              onChange={handleAddress}
+              name="Address"
+              placeholder="Delivery Address"
+              value={address}
+              rows={3}></textarea>
+            {/* <select name="State" id="">
       <option value=""> choose your state </option>
 
       {State.getStatesOfCountry(countries).map((item)=>{
@@ -164,107 +149,52 @@ const Checkout = ({
         </option>
       })}
       </select> */}
-      <input type="text" name="orderCode" value={userOrderCode} readOnly className="hideOrder"/>
+            <input
+              type="text"
+              name="orderCode"
+              value={userOrderCode}
+              readOnly
+              className="hideOrder"
+            />
+            <h3>
+              <b>Total:</b>
+            </h3>
+            <input
+              type="text"
+              readOnly
+              name="Total"
+              value={formattedPrice}
+              className="total"
+            />
+            <button
+              type="submit"
+              className="submit"
+              
+              onClick={() => {
+                setUserOrderCode(code);
 
-      <h3><b>Total:</b></h3>
-
-      <input type="text" readOnly name="Total" value={formattedPrice} className="total"/>
-
-      <button
-        type="submit"
-        className="submit"
-        onClick={() => {
-          setUserOrderCode(code);
-
-
-              // Redirect to the homepage if the cart is empty
-        }}>
-        submit
-      </button> <br /> <br /> <br />
-
-      {/* <button onClick={clear}> clear </button> */}
-      {/* <textarea name="ProductName" id="" readOnly value={name+ " "+quantity}></textarea> */}
-    </form>
-  </div>: <p className="orderMessage">your order is being processed... go to watches page to order more items </p>}
-   </div>
+              }}>
+              submit
+            </button>{" "}
+            <br /> <br /> <br />
+           
+          </form>
+        </div>
+      ) : (
+        <p className="orderMessage">
+          your order is being processed ... go to watches page to order more
+          items{" "}
+          <button className="ok"
+            onClick={() => {
+              navigate("/WatchPage");
+            }}>
+            ok
+          </button>{" "}
+        </p>
+      )}
+    </div>
   );
 };
 
 export default Checkout;
 
-//
-//
-
-// "use client";
-// import React from "react";
-//
-// import { useState, useRef } from "react";
-// import PhoneInput from "react-phone-number-input";
-// import "react-phone-number-input/style.css";
-
-//
-
-//   // const [value, setValue] = useState("");
-//   const [institute, setInstitute] = useState("");
-//   const [educationLevel, setEducationLevel] = useState("");
-//   const [phone, setPhone] = useState("");
-//   const [mail, setMail] = useState("");
-//   const [message, setMessage] = useState("");
-//
-//
-
-//   const handleChange = (event: any) => {
-//     setPhone(event);
-//     // console.log(event);
-//   };
-//   const handleMessage = (e: any) => {
-//     setMessage(e.target.value);
-//     console.log(e.target.value);
-//   };
-
-//
-//   const submitInstiTute = (e: React.ChangeEvent<HTMLSelectElement>) => {
-//     setInstitute(e.target.value);
-//     console.log(e.target.value);
-//   };
-//   const submitEducationalLevel = (e: React.ChangeEvent<HTMLSelectElement>) => {
-//     setEducationLevel(e.target.value);
-//     console.log(e.target.value);
-//   };
-//   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     setMail(e.target.value);
-//     console.log(e.target.value);
-//   };
-
-//   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     if (
-//       mail.trim() !== "" &&
-//       institute.trim() !== "" &&
-//       educationLevel.trim() !== "" &&
-//       phone.trim() !== "" &&
-//       message.trim() !== "" &&
-//       name1.trim() !== ""
-//     ) {
-//       swal({
-//         title: "Good job!",
-//         text: "Hi " + name1 + " your message has been submitted successfully!",
-//         icon: "success",
-//       });
-//       handleSubmit(e);
-//       clearForm();
-//     } else {
-//       swal({
-//         title: "oops!",
-//         text: "please fill all the empty input!",
-//         icon: "error",
-//       });
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <div className="mt-4 mb-4  px-5 py-5 lg:px-28">
-//         <center>
-//           <h1 className="text-blueG text-2xl font-bold">Get In Touch </h1>
-//         </center>

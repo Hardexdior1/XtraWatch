@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import "../Styles/Section4.css";
 import "../Styles/Style.css";
-import { FaDeleteLeft } from "react-icons/fa6";
-import { FaRemoveFormat } from "react-icons/fa";
-import { FcDeleteRow } from "react-icons/fc";
 import { MdDelete } from "react-icons/md";
-import { GiPriceTag } from "react-icons/gi";
 import { Link } from "react-router-dom";
 const Cart = ({
   cart,

@@ -106,20 +106,8 @@ function App() {
       return quat;
     });
   };
-
-  // const decrementQuantity = (product) => {
-  //   setCart((prev) => {
-  //     let quat = prev.map((item) =>
-  //       item === product? {...item, quantity: item.quantity >0? item.quantity-1:item } : item
-  //     );
-  //     localStorage.setItem('cart', JSON.stringify(quat));
-  //     return quat;
-  //   });
-  // };
-  // console.log(699+599)
   const decrementQuantity = (product) => {
     setCart((prev) => {
-      // Map through the previous cart state
       let updatedCart = prev.map((item) => {
         if (item.id === product.id) {
           return {

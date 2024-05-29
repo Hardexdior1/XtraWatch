@@ -68,23 +68,24 @@ gap: 15px ;
 
 /* section3/gadgets css starts here  */
 .gadget{
-    padding: 45px 30px ;
+    padding: 20px 30px ;
 }
 .gadgetDemo{
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-image: url(../images/box-bg-1.jpg);
-    border-radius: 5rem;
+    border-radius: 4rem;
     /* object-fit: cover; */
     /* opacity: 0.4; */
-    height: 100%;
+    /* height: 100%; */
 
+    padding: 15px 100px ;
     
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 95vh;
+    /* height: 95vh; */
     background-size: cover;
 
 

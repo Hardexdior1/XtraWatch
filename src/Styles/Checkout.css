@@ -72,8 +72,19 @@
 .submit{
     padding: 10px 0px;
     border-radius: 7px;
-    background-color: black;
+    background-color: rgb(32, 30, 30);
     color: white;
     width: 100%;
     margin-top: 20px;
+}
+
+.ok{
+    padding: 2px 10px ; 
+    margin-left: 5px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px rgb(133, 129, 124);
+    cursor: pointer;
+    background-color: black;
 }

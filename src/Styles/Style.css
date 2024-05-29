@@ -6,11 +6,6 @@
     display: flex;
     gap: 4;
     align-items: center;
-    /* margin-top: 0; */
-    /* border-bottom:1px solid grey  ; */
-    /* margin-bottom: 0px; */
-    
-    /* padding: 200px 0px; */
 }
 .watchAndNameCarrier img{
     width: 100px;
@@ -23,10 +18,8 @@
 }
 .cartWrap{
    border-radius: 10px;
-   /* box-shadow: 0px 7px 10px rgb(255, 255, 255); */
    box-shadow: 0px 5px 15px rgb(117, 116, 116);
 
-   /* box-shadow: 3px 3px 4px grey; */
    color: #75757a;
     background-color: white;
 }
@@ -162,150 +155,3 @@
 
 
 
-/* 
-
-
-import React, { useEffect, useState } from "react";
-// import "../Styles/Section4.css";
-import "../Styles/Style.css";
-import { FaDeleteLeft } from "react-icons/fa6";
-import { FaRemoveFormat } from "react-icons/fa";
-import { FcDeleteRow } from "react-icons/fc";
-import { MdDelete } from "react-icons/md";
-import { GiPriceTag } from "react-icons/gi";
-import { Link } from "react-router-dom";
-const Cart = ({
-  cart,
-  cartTotal,
-  removeFromCart,
-  clear,
-  incrementQuantity,
-  // decrementQuantity,
-}) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-  const formattedPrice = formatter.format(cartTotal);
-  return (
-    <div>
-      <center className="margin">
-        {cart.length > 0 ? (
-          <b>
-            {cart.length < 2 ? (
-              <b>{cart.length} product in your cart </b>
-            ) : (
-              <b>{cart.length} products in your cart </b>
-            )}{" "}
-          </b>
-        ) : (
-          <b>no products in your cart</b>
-        )}
-      </center>
-
-      {cart.length > 0 ? (
-        <div className="cartWrapper">
-          <div className="cartWrap">
-            {cart.map((eachItem) => {
-              const {
-                name,
-                price,
-                normalPrice,
-                img,
-                sale,
-                increaseCart,
-                quantity,
-              } = eachItem;
-
-              return (
-                <div key={eachItem.id}>
-                  <div className="itemSectionPadding">
-                    <div>
-                      <div className="flexPriceAndImage">
-                        <div className="watchAndNameCarrier">
-                          <div>
-                            <img src={img} alt="product-img" />
-                          </div>
-
-                          <div>
-                            <h4 className="name">{name}</h4>
-                            <div className="flexSeller">
-                              <p className="seller">seller: </p>
-                              <p>xtrawatch</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <h2 className="price"> ${price}</h2>
-                          <h4 className="del">
-                            <del>{normalPrice} </del>
-                          </h4>
-                        </div>
-                      </div>
-
-                      <div className="flexRemove">
-                        <div
-                          className="remove1"
-                          onClick={() => {
-                            removeFromCart(eachItem);
-                          }}>
-                          <MdDelete />
-                          <p>
-                            <b>Remove</b>
-                          </p>
-                        </div>
-
-                        <div className="btnCarrier">
-                          <button
-                            onClick={() => {
-                              // decrementQuantity(eachItem);
-                            }}>
-                            -
-                          </button>
-                          <p>{quantity}</p>
-                          <button
-                            onClick={() => {
-                              incrementQuantity(eachItem);
-                            }}>
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="line1"></div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="summary">
-            <h3>CART SUMMARY</h3>
-
-            <div className="totalFlex">
-              <h4>Subtotal </h4>
-              <h3>{formattedPrice}</h3>
-            </div>
-            <Link to="/Checkout">
-              {" "}
-              <button>
-                CHECKOUT {"("} {formattedPrice} {")"}
-              </button>
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <Link to="/WatchPage">
-          <button>continue shopping</button>
-        </Link>
-      )}
-    </div>
-  );
-};
-
-export default Cart; */

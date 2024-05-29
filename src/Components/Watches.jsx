@@ -8,7 +8,7 @@ const Watches = ({ img, name, price, normalPrice, sale, addToCart,increase, stor
     window.scrollTo(0, 0);
   }, []);
 
-console.log(id)
+// console.log(id)
   
   return (
     <div>
