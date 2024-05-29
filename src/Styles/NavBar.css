@@ -141,6 +141,7 @@ width: 50px;} */
         width: 65%;
         transition: 10s ;
         z-index: 300;
+        padding-left: 15px;
           animation: fadeAnimation 2s ease  alternate;
 
 

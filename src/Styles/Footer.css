@@ -51,6 +51,7 @@ border-top-left-radius: 3rem;
         /* align-items: last baseline; */
         align-items: baseline;
         padding:30px 35px;
+        margin-top: 40px;
     }
     .flexLink{
         /* display: grid; */
@@ -62,6 +63,7 @@ border-top-left-radius: 3rem;
         display: grid;
         grid-template-columns: 1fr 1fr ;
         gap: 20px;
+        margin-top: 40px;
     }
     .footer a{
         font-size: 15px;

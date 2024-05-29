@@ -119,7 +119,7 @@ const Cart = ({
       </div>
       :<Link to="/WatchPage" >
             
-            <button>
+            <button className="margin">
               continue shopping
             </button>
           </Link>}
