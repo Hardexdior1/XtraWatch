@@ -132,7 +132,7 @@ width: 50px;} */
         position: absolute;
         flex-direction: column;
         gap: 15px ;
-        padding-top: 15px ;
+        padding-top: 25px;
         text-align: left;
         top: -15px;
         left: 0px ;
@@ -141,7 +141,7 @@ width: 50px;} */
         width: 65%;
         transition: 10s ;
         z-index: 300;
-        padding-left: 15px;
+        padding-left: 20px;
           animation: fadeAnimation 2s ease  alternate;
 
 
